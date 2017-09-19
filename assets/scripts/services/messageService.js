@@ -7,8 +7,9 @@ angular.module('chattyApp')
         return $http.get('/messages');
       }
 
-      this.addMessage = function ( message ) {
-        return $http.post('/messages', { message: message });
+      this.addMessage = function ( message, userName ) {
+        return $http.post('/messages', { message: message, userName : userName});
       }
     
-  });
+  })
+  ;

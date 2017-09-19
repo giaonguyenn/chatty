@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const port = 7000;
+const port = 4000;
 
 const messages = [
 	{
@@ -19,8 +19,14 @@ app.get("/messages", (req, res, next) => {
 });
 
 app.post("/messages", (req, res, next) => {
-	messages.push({message: req.body.message, time: new Date()});
+	messages.push(
+		{message: req.body.message, 
+			time: new Date(),
+			userName: req.body.userName
+		});
 	res.status(200).json({messages: messages});
 });
 
-app.listen(port, () => {console.log("blah")});
+app.listen(port, () => { 
+	console.log(`Listening on Port: ${port}`);
+}); 
